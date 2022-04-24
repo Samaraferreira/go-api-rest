@@ -12,6 +12,7 @@ import (
 func HandleRequest() {
 	router := mux.NewRouter()
 	router.Use(middleware.ContentTypeMiddleware)
+	router.Use(middleware.CORSMiddleware)
 	router.HandleFunc("/api/users", controllers.GetAllUsers).Methods("GET")
 	router.HandleFunc("/api/users", controllers.AddNewUser).Methods("POST")
 	router.HandleFunc("/api/users/{id}", controllers.GetUserById).Methods("GET")
